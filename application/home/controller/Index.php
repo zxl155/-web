@@ -1,16 +1,17 @@
 <?php
 namespace app\home\controller;
 
-class Index
+class Index extends \think\Controller
 {
     /**
-     * 首页列表
+     * 首页展示
      * @param
      * @return
      */
-    public function show()
+    public function indexShow()
     {
-        echo "首页";
+
+        return $this->fetch('index');
     }
 
 }
