@@ -10,7 +10,6 @@ class Index extends \think\Controller
      */
     public function indexShow()
     {
-
         return $this->fetch('index');
     }
 
