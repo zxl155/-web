@@ -10,7 +10,7 @@ class Index
      */
     public function show()
     {
-        echo "首页";
+        echo "首页啊啊";
     }
 
 }
