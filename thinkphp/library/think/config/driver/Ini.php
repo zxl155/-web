@@ -1,5 +1,4 @@
 <?php
-use think\Route;
 // +----------------------------------------------------------------------
 // | ThinkPHP [ WE CAN DO IT JUST THINK ]
 // +----------------------------------------------------------------------
@@ -9,4 +8,17 @@ use think\Route;
 // +----------------------------------------------------------------------
 // | Author: liu21st <liu21st@gmail.com>
 // +----------------------------------------------------------------------
-Route::rule('/','home/Index/show');
+
+namespace think\config\driver;
+
+class Ini
+{
+    public function parse($config)
+    {
+        if (is_file($config)) {
+            return parse_ini_file($config, true);
+        } else {
+            return parse_ini_string($config, true);
+        }
+    }
+}
