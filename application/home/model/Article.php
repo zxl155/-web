@@ -25,4 +25,21 @@ class Article extends Model
 
         return $result;
     }
+
+    /**
+     * 张晓龙
+     * @time 2019-06-15
+     * @param $colimuId 列表ID
+     * @param $count 每页显示条数
+     * @param $maxId 下一页
+     * @param $minId 上一页
+     * @return $result
+     */
+    public static function detailsList($colimuId,$count,$maxId,$minId)
+    {
+        $result = Db::table('duyan_people_article')->where('colimu_id','=',$colimuId)->field(['id','name'])->paginate($count);
+        $result = Db::query("SELECT id,name FROM duyan_people_article WHERE colimu_id = $colimuId AND `status` = 1 ORDER BY id DESC limit 0,$count" );
+
+        return $result;
+    }
 }

@@ -12,3 +12,5 @@ use think\Route;
 
 
 Route::rule('/','home/Index/indexShow');
+Route::rule('colleges/:id','home/Index/detailsList');
+

@@ -4,6 +4,7 @@ namespace app\home\controller;
 use app\home\model\Banner;
 use app\home\model\Colimu;
 use app\home\model\Article;
+use think\Request;
 
 class Index extends \think\Controller
 {
@@ -87,6 +88,27 @@ class Index extends \think\Controller
             'teachersResult' => $teachersResult,
             'courseAuditionResult' => $courseAuditionResult
         ]);
+    }
+    /**
+     * 详情列表
+     * @time 2019-06-15
+     * @param $colimu_id 列表ID
+     * @param $count 每页显示条数
+     * @param $maxId 下一页
+     * @param $minId 上一页
+     * @return
+     */
+    public function detailsList(Request $request)
+    {
+       $colimu_id = empty($request->param('id')) ? null : $request->param('id');
+       $count     = empty($request->param('count')) ? 9 : $request->param('count');
+       $maxId     = empty($request->param('next_page_token')) ? 0 : $request->param('next_page_token');
+       $minId     = empty($request->param('last_page_token')) ? 0 : $request->param('last_page_token');
+
+        Article::detailsList($colimu_id,$count,$maxId,$minId);
+
+
+
     }
 
 }
