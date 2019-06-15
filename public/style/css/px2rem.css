@@ -101,6 +101,17 @@ a:active {
 .fl {
   float: left;
 }
+.clearfix {
+  *zoom: 1;
+}
+.clearfix:after {
+  display: block;
+  overflow: hidden;
+  clear: both;
+  height: 0;
+  visibility: hidden;
+  content: ".";
+}
 /*弹性盒*/
 .flex {
   display: flex;
@@ -139,12 +150,11 @@ a:active {
   margin-left: auto;
   margin-right: auto;
 }
-.index {
+.container {
   width: 10rem;
 }
 .header {
   height: 1.42666667rem;
-  border-bottom: 1px solid #ccc;
 }
 .header .left {
   width: 3.14666667rem;
@@ -168,6 +178,7 @@ a:active {
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
+  border-top: 1px solid #ccc;
   height: 1.17333333rem;
   line-height: 1.17333333rem;
 }
@@ -250,8 +261,15 @@ a:active {
 .part2 ul li {
   width: 4.46666667rem;
 }
+.part2 ul li img {
+  display: block;
+  width: 4.46666667rem;
+  height: 2.72rem;
+}
 .part2 ul li p {
   margin-top: 0.13333333rem;
+  height: 1.06666667rem;
+  overflow: hidden;
 }
 .part2 ul li p a {
   font-size: 0.4rem;
@@ -290,9 +308,17 @@ a:active {
 .part3 .con .left {
   width: 5.64rem;
 }
+.part3 .con .left img {
+  width: 5.64rem;
+  height: 3.86666667rem;
+}
 .part3 .con .right {
   width: 3.44rem;
   margin-left: 0.13333333rem;
+}
+.part3 .con .right img {
+  width: 3.44rem;
+  height: 1.86666667rem;
 }
 .part3 .con .right img:last-child {
   margin-top: 0.13333333rem;
@@ -365,6 +391,10 @@ a:active {
 .part5 .zixun .left {
   width: 2.82666667rem;
 }
+.part5 .zixun .left img {
+  width: 2.82666667rem;
+  height: 1.74666667rem;
+}
 .part5 .zixun .right {
   width: 6.09333333rem;
   margin-left: 0.26666667rem;
@@ -413,6 +443,11 @@ a:active {
   width: 2.4rem;
   text-align: center;
 }
+.part6 ul li img {
+  width: 2.4rem;
+  height: 2.4rem;
+  border-radius: 50%;
+}
 .part6 ul li p {
   margin-top: 0.26666667rem;
 }
@@ -430,11 +465,13 @@ a:active {
   margin-left: 0.93333333rem;
   margin-right: 0.93333333rem;
 }
+.index .part7 {
+  margin-bottom: 1.82666667rem;
+}
 .part7 {
   padding-left: 0.4rem;
   padding-right: 0.4rem;
   margin-top: 0.6rem;
-  margin-bottom: 1.82666667rem;
 }
 .part7 ul li {
   padding-top: 0.4rem;
@@ -443,6 +480,10 @@ a:active {
 }
 .part7 ul li .left {
   width: 2.82666667rem;
+}
+.part7 ul li .left img {
+  width: 2.82666667rem;
+  height: 1.73333333rem;
 }
 .part7 ul li .right {
   width: 6.05333333rem;
@@ -502,4 +543,202 @@ footer ul li a {
 }
 footer ul li:last-child {
   border-right: 0;
+}
+/*面包屑导航*/
+.breadcrumb {
+  width: 10rem;
+  height: 0.88rem;
+  background: #f4f4f4;
+  padding-left: 0.4rem;
+  font-size: 0.34666667rem;
+  color: #999999;
+}
+.breadcrumb a {
+  display: inline-block;
+  font-size: 0.34666667rem;
+  color: #999999;
+  line-height: 0.88rem;
+}
+/*分页*/
+.pagination {
+  width: 8.64rem;
+  margin-bottom: 1.86666667rem;
+  margin-left: auto;
+  margin-right: auto;
+}
+.pagination a {
+  flex: 1;
+  width: 3.97333333rem;
+  height: 0.85333333rem;
+  border: 1px solid #ccc;
+  font-size: 0.4rem;
+  color: #999999;
+  line-height: 0.85333333rem;
+  text-align: center;
+  border-radius: 0.42666667rem;
+  -webkit-border-radius: 0.42666667rem;
+}
+.pagination a:last-child {
+  margin-left: 0.64rem;
+}
+/*管理智库*/
+.glzk,
+.zsjz {
+  padding-left: 0.4rem;
+  padding-right: 0.4rem;
+  margin-top: 0.6rem;
+  margin-bottom: 0.53333333rem;
+}
+.glzk ul,
+.zsjz ul {
+  margin-top: 0.4rem;
+}
+.glzk ul li,
+.zsjz ul li {
+  padding-top: 0.33333333rem;
+  padding-bottom: 0.33333333rem;
+  border-bottom: 1px solid #ccc;
+}
+.glzk ul li span,
+.zsjz ul li span {
+  display: block;
+  width: 0.10666667rem;
+  height: 0.10666667rem;
+  border-radius: 50%;
+  background: #9f0000;
+  margin-top: 0.18666667rem;
+  margin-right: 0.13333333rem;
+}
+.glzk ul li a,
+.zsjz ul li a {
+  display: inline-block;
+  width: 8.98666667rem;
+  font-size: 0.4rem;
+}
+.glzk ul li:first-child,
+.zsjz ul li:first-child {
+  border-top: 1px solid #ccc;
+}
+/*近期课程*/
+.jqkc {
+  margin-bottom: 0.6rem;
+}
+/*师资介绍*/
+.szjs {
+  padding-left: 0.4rem;
+  padding-right: 0.4rem;
+  margin-top: 0.6rem;
+  margin-bottom: 0.6rem;
+}
+.szjs li {
+  margin-top: 0.4rem;
+}
+.szjs .left {
+  width: 2rem;
+}
+.szjs .left img {
+  display: block;
+  width: 2rem;
+  height: 2rem;
+  border-radius: 50%;
+}
+.szjs .right {
+  width: 6.8rem;
+  margin-left: 0.4rem;
+}
+.szjs .right p:first-child a {
+  font-size: 0.4rem;
+}
+.szjs .right p:last-child {
+  margin-top: 0.26666667rem;
+  padding-bottom: 0.26666667rem;
+  border-bottom: 1px solid #ccc;
+}
+.szjs .right p:last-child a {
+  font-size: 0.34666667rem;
+  height: 1.06666667rem;
+  overflow: hidden;
+}
+/*同学新闻*/
+.txxw,
+yxzx {
+  margin-bottom: 0.6rem;
+}
+/*在职校友*/
+#zzxy {
+  margin-bottom: 1.33333333rem;
+}
+.artic {
+  padding-top: 0.4rem;
+  padding-left: 0.4rem;
+  padding-right: 0.4rem;
+}
+.artic .top {
+  border-bottom: 1px solid #ccc;
+  padding-bottom: 0.26666667rem;
+}
+.artic .top p {
+  margin-top: 0.2rem;
+  position: relative;
+  font-size: 0.34666667rem;
+  color: #999999;
+}
+.artic .top p span {
+  position: absolute;
+  right: 0rem;
+}
+.artic .bottom {
+  margin-top: 0.33333333rem;
+  padding-bottom: 0.53333333rem;
+  font-size: 0.37333333rem;
+  color: #333333;
+  line-height: 0.61333333rem;
+}
+.artic .bottom img {
+  display: block;
+  max-width: 100%;
+  margin-top: 0.26666667rem;
+  margin-bottom: 0.26666667rem;
+  margin-left: auto;
+  margin-right: auto;
+}
+.artic .np {
+  margin-bottom: 0.53333333rem;
+  border-top: 1px solid #ccc;
+}
+.artic .np p {
+  margin-top: 0.4rem;
+  font-size: 0.37333333rem;
+  color: #333333;
+  font-weight: bold;
+}
+.artic .np p a {
+  width: 6.66666667rem;
+  font-weight: 500;
+}
+.hdtp {
+  padding-left: 0.4rem;
+  padding-right: 0.4rem;
+  margin-top: 0.6rem;
+  margin-bottom: 0.6rem;
+}
+.hdtp ul li {
+  width: 4.4rem;
+  height: 2.66666667rem;
+  margin-top: 0.4rem;
+}
+.hdtp ul li img {
+  display: block;
+  width: 4.4rem;
+  height: 2.66666667rem;
+}
+.hdtp ul li:nth-of-type(2n) {
+  margin-left: 0.4rem;
+}
+.bigimg {
+  display: none;
+  width: 10rem;
+}
+.bigimg img {
+  width: 100%;
 }
