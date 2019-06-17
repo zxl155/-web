@@ -12,5 +12,7 @@ use think\Route;
 
 
 Route::rule('/','home/Index/indexShow');
-Route::rule('colleges/:id','home/Index/detailsList');
+Route::rule('colleges/:id/:page','home/Index/detailsList');
+Route::rule('introduce','home/Index/introduceShow');
+Route::rule('details/:id','home/Index/contentDetails');
 

@@ -26,7 +26,7 @@ class Index extends \think\Controller
         }
 
         //获取导航栏
-        $colimuResult = Colimu::ColimuList();
+        $colimuResult = Colimu::colimuList();
         //获取活动公共
         $activityResult = Article::ArticleList(3,'id,name,content',4);
         /*foreach ($activityResult as $activityKey => $activityValue) {
@@ -100,15 +100,81 @@ class Index extends \think\Controller
      */
     public function detailsList(Request $request)
     {
-       $colimu_id = empty($request->param('id')) ? null : $request->param('id');
-       $count     = empty($request->param('count')) ? 9 : $request->param('count');
-       $maxId     = empty($request->param('next_page_token')) ? 0 : $request->param('next_page_token');
-       $minId     = empty($request->param('last_page_token')) ? 0 : $request->param('last_page_token');
-
-        Article::detailsList($colimu_id,$count,$maxId,$minId);
+       $colimu_id = empty($request->param('id')) ? 0 : $request->param('id');
+       $page_size = empty($request->param('page_size')) ? 9 : $request->param('page_size');
+       $page      = empty($request->param('page')) ? 1 : $request->param('page');
 
 
+       //单条信息
+       $colimuResult  = Colimu::oneList($colimu_id);
 
+       if ($colimuResult[0]['type'] == 1) {
+           //详情列表
+           $data = Article::detailsList($colimu_id,$page,$page_size,'id,name');
+
+           return $this->fetch('InstitutionalDetails',['articleResult' => $data['result'],
+               'colimuResult' => $colimuResult,
+               'page' => $page,
+               'countPage' => $data['countPage'],
+           ]);
+
+       } else if ($colimuResult[0]['type'] == 2) {
+           //详情列表
+           $data = Article::detailsList($colimu_id,$page,6,'id,picture_url');
+
+           return $this->fetch('pictureDetails',['articleResult' => $data['result'],
+               'colimuResult' => $colimuResult,
+               'page' => $page,
+               'countPage' => $data['countPage']
+           ]);
+
+       } else if ($colimuResult[0]['type'] == 3) {
+           //详情列表
+           $data = Article::detailsList($colimu_id,$page,5,'id,name,content,picture_url');
+
+           return $this->fetch('teachersDetails',['articleResult' => $data['result'],
+               'colimuResult' => $colimuResult,
+               'page' => $page,
+               'countPage' => $data['countPage']
+           ]);
+       }
+
+
+
+    }
+    /**
+     * 院校介绍
+     * @time 2019-06-17
+     * @return
+     */
+    public function introduceShow()
+    {
+        $recommendResult = Article::ArticleList(1,'id,name',5,1);
+
+        return $this->fetch('collegesIntroduce',['recommendResult' => $recommendResult]);
+    }
+    /**
+     * 文章详情
+     * @time 2019-06-17
+     * @return
+     */
+    public function contentDetails(Request $request)
+    {
+        $article_id = empty($request->param('id')) ? 0 : $request->param('id');
+
+        //内容
+        $contentResult = Article::contentDetails($article_id,'id,name,content,create_time,colimu_id');
+
+        //相关文章
+        $relevantResult = Article::detailsList($contentResult[0]['colimu_id'],1,5,'id,name');
+        //获取当前文章前一条数据跟后一条数据
+        $aroundResult = Article::aroundList($article_id,$contentResult[0]['colimu_id']);
+
+        return $this->fetch('contentDetails',['contentResult' => $contentResult,
+            'relevantResult' => $relevantResult['result'],
+            'colimuId' => $contentResult[0]['colimu_id'],
+            'aroundResult' => $aroundResult
+        ]);
     }
 
 }

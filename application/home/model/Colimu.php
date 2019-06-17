@@ -17,9 +17,21 @@ class Colimu extends Model
      * @param
      * @return $reslut
      */
-    public static function ColimuList()
+    public static function colimuList()
     {
-        $result = Db::query("SELECT name FROM duyan_people_colimu WHERE `status` = 1 AND is_navigation = 1");
+        $result = Db::query("SELECT id,name,column_url FROM duyan_people_colimu WHERE `status` = 1 AND is_navigation = 1");
+
+        return $result;
+    }
+    /**
+     *  单条信息查询
+     * @time 2019-06-15
+     * @param $id 导航ID
+     * @return $reslut
+     */
+    public static function oneList($id)
+    {
+        $result = Db::query("SELECT id,name,type FROM duyan_people_colimu WHERE `id` = $id");
 
         return $result;
     }

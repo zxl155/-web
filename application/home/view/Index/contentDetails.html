@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <title>资讯新闻详情</title>
+    <meta content="yes" name="apple-mobile-web-app-capable">
+    <meta content="yes" name="apple-touch-fullscreen">
+    <meta content="telephone=no,email=no" name="format-detection">
+
+    <link href="__PUBLIC__/css/px2rem.css" rel="stylesheet">
+    <link href="__PUBLIC__/css/swiper.min.css" rel="stylesheet">
+    <link href="__PUBLIC__/css/iconfont.css" rel="stylesheet">
+    <script src="__PUBLIC__/js/flexible_css.debug.js"></script>
+    <script src="__PUBLIC__/js/flexible.debug.js"></script>
+    <script type="text/javascript" src="__PUBLIC__/ueditor/ueditor.config.js"></script>
+    <script type="text/javascript" src="__PUBLIC__/ueditor/ueditor.all.min.js"></script>
+    <script type="text/javascript" src="__PUBLIC__/ueditor/lang/zh-cn/zh-cn.js"></script>
+
+</head>
+<body>
+<div class="container">
+    {include file="public:head" /}
+    <div class="clearfix"></div>
+    <div class="breadcrumb">
+        <a href="/">返回</a><!-- > <a href="">面包屑</a>
+        > <a href="">面包屑</a>-->
+    </div>
+    <div class="artic">
+        <div class="top">
+            <h1 class="title">
+                <span></span>
+                {$contentResult[0]['name']}
+            </h1>
+            <p>人大深圳读研教育中心 <span>{$contentResult[0]['create_time']}</span></p>
+        </div>
+        <div class="bottom">
+            {$contentResult[0]['content']}
+        </div>
+        <div class="np">
+            {if !empty($aroundResult[0])}
+                <p class="flex">上一篇：<a href="/details/{$aroundResult[0]['id']}" class="ellipsis">{$aroundResult[0]['name']}</a></p>
+            {/if}
+            {if !empty($aroundResult[1])}
+            <p class="flex">下一篇：<a href="/details/{$aroundResult[1]['id']}" class="ellipsis">{$aroundResult[1]['name']}</a></p>
+            {/if}
+        </div>
+    </div>
+    <div class="gray"></div>
+    <div class="glzk" style="margin-bottom: 1.86666667rem;">
+        <div class="title">
+            <span></span>
+            相关文章
+            <a href="/colleges/{$colimuId}/1">更多</a>
+        </div>
+        <ul>
+            {foreach name="relevantResult" as item="relevantValue"}
+                <li class="flex">
+                    <span></span>
+                    <a href="/details/{$relevantValue.id}" class="ellipsis">{$relevantValue.name}</a>
+                </li>
+            {/foreach}
+        </ul>
+    </div>
+    {include file="public:foot" /}
+</div>
+<script src="__PUBLIC__/js/jquery-1.8.3.min.js"></script>
+<script src="__PUBLIC__/js/swiper.min.js"></script>
+<script src="__PUBLIC__/js/index.js"></script>
+<script>
+    $(function(){
+        UE.getEditor('content',{    //content为要编辑的textarea的id
+            //initialFrameWidth: 1100,   //初始化宽度
+            initialFrameHeight: 500,   //初始化高度
+        });
+    });
+</script>
+</body>
+</html>

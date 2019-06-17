@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <title>院校简绍</title>
+    <meta content="yes" name="apple-mobile-web-app-capable">
+    <meta content="yes" name="apple-touch-fullscreen">
+    <meta content="telephone=no,email=no" name="format-detection">
+
+    <link href="__PUBLIC__/css/px2rem.css" rel="stylesheet">
+    <link href="__PUBLIC__/css/swiper.min.css" rel="stylesheet">
+    <link href="__PUBLIC__/css/iconfont.css" rel="stylesheet">
+    <script src="__PUBLIC__/js/flexible_css.debug.js"></script>
+    <script src="__PUBLIC__/js/flexible.debug.js"></script>
+</head>
+<body>
+<div class="container">
+    {include file="public:head" /}
+    <div class="clearfix"></div>
+    <div class="breadcrumb">
+        <a href="/">首页</a> > <a href="#">院校介绍</a>
+    </div>
+    <div class="artic">
+        <div class="top">
+            <h1 class="title">
+                <span></span>
+                中国人民大学校友会简介
+            </h1>
+            <p>人大深圳读研教育中心 <span>2019-06-11</span></p>
+        </div>
+        <div class="bottom">
+            <p> 以“帮助更多在职人士获取硕士学位证书”为使命，15年来坚持以“打造国内最强的在职研究生招生信息大全以及MBA考前辅导平台”为目标，已帮助62000多名在职人士实现获取硕士学位梦想。</p>
+            <img src="__PUBLIC__/images/huo1.jpg" alt="">
+            <p>读研教育从创办时日起，与国内多所985、211高校签订合作招生协议，主要为高校招收在职研究生学员提供前期咨询解答服务，并为学员提供考前辅导业务。先后与中国人民大学、对外经济贸易大学、南开大学、上海财经大学、华中科技大学、山东大学、南昌大学等全国100多所高校300多个学院密切合作，已为近200万学员提供了咨询服务。</p>
+        </div>
+    </div>
+    <div class="gray"></div>
+    <div class="glzk" style="margin-bottom: 1.86666667rem;">
+        <div class="title">
+            <span></span>
+            推荐阅读
+            <a href="#">更多</a>
+        </div>
+        <ul>
+            {foreach name="recommendResult" as item="recommendValue"}
+                <li class="flex">
+                    <span></span>
+                    <a href="/details/{$recommendValue.id}" class="ellipsis">{$recommendValue.name}</a>
+                </li>
+            {/foreach}
+        </ul>
+    </div>
+    {include file="public:foot" /}
+</div>
+<script src="__PUBLIC__/js/jquery-1.8.3.min.js"></script>
+<script src="__PUBLIC__/js/swiper.min.js"></script>
+<script src="__PUBLIC__/js/index.js"></script>
+</body>
+</html>
