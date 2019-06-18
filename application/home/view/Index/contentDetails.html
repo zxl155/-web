@@ -34,7 +34,10 @@
             <p>人大深圳读研教育中心 <span>{$contentResult[0]['create_time']}</span></p>
         </div>
         <div class="bottom">
-            {$contentResult[0]['content']}
+            {foreach name="contentResult" as item="contentValue"}
+                {$contentResult[0]['content']|html_entity_decode=###}
+            {/foreach}
+
         </div>
         <div class="np">
             {if !empty($aroundResult[0])}
