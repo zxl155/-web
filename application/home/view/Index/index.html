@@ -82,11 +82,15 @@
             </div>
             <div class="con flex">
                 <div class="left">
-                    <img src="__PUBLIC__/{$pictureResult[0]['picture_url']}" alt="" class="img-responsive">
+                    {foreach name="pictureResult" as item="pictureValue"}
+                        <img src="__PUBLIC__/{$pictureResult[0]['picture_url']}" alt="" class="img-responsive">
+                    {/foreach}
                 </div>
                 <div class="right">
-                    <img src="__PUBLIC__/{$pictureResult[1]['picture_url']}" alt="" class="img-responsive">
-                    <img src="__PUBLIC__/{$pictureResult[2]['picture_url']}" alt="" class="img-responsive">
+                    {foreach name="pictureResult" as item="pictureValue"}
+                        <img src="__PUBLIC__/{$pictureResult[1]['picture_url']}" alt="" class="img-responsive">
+                        <img src="__PUBLIC__/{$pictureResult[2]['picture_url']}" alt="" class="img-responsive">
+                    {/foreach}
                 </div>
             </div>
         </div>

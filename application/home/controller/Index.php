@@ -48,6 +48,7 @@ class Index extends \think\Controller
 
         //获取活动图片
         $pictureResult = Article::ArticleList(6,'id,picture_url',3);
+
         //获取招生信息
         $recruitStudentResult = Article::ArticleList(7,'id,name',5);
         //获取双硕信息
