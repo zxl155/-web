@@ -29,11 +29,11 @@
             {foreach name="articleResult" as item="articleValue"}
                 <li class="flex">
                     <div class="left">
-                        <img src="__PUBLIC__/{$articleValue.picture_url}" alt="" class="img-responsive">
+                        <img src="{$articleValue.picture_url}" alt="" class="img-responsive">
                     </div>
                     <div class="right">
                         <p><a href="">{$articleValue.name}</a></p>
-                        <p><a href="">{$articleValue.content}</a></p>
+                        <p><a href="">{$articleValue.content|html_entity_decode=###}</a></p>
                     </div>
                 </li>
             {/foreach}
