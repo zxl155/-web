@@ -79,6 +79,16 @@ class Index extends \think\Controller
 
         //获取师资介绍
         $teachersResult = Article::ArticleList(5,'id,name,content,picture_url',3);
+        $strTeachers = '';
+        foreach ($teachersResult as $teachersKey => $teachersValue) {
+            preg_match_all("/[\x{4e00}-\x{9fa5}]+/u", $teachersValue['content'], $result);
+            if (!empty($result[0])) {
+                $strTeachers = implode($result[0],'');
+                $strTeachers = str_replace('宋体','',$strActivity);
+            }
+
+            $teachersResult[$teachersKey]['content'] = substr_replace($strTeachers,'...',30);
+        }
         //获取课程试听
         $courseAuditionResult = Article::ArticleList(11,'id,name,picture_url,audition_count',3);
 
