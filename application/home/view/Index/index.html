@@ -81,19 +81,21 @@
             </div>
             <div class="con flex">
                 <div class="left">
-                    {foreach name="pictureResult" as item="pictureValue"}
-                        <img src="{$pictureResult[0]['picture_url']}" alt="" class="img-responsive">
-                    {/foreach}
+
+                        {if isset($pictureResult[0]['picture_url'])}
+                            <img src="{$pictureResult[0]['picture_url']}" alt="" class="img-responsive">
+                        {/if}
+
                 </div>
                 <div class="right">
-                    {foreach name="pictureResult" as item="pictureValue"}
-                        {if !empty($pictureValue[1])}
+
+                        {if isset($pictureResult[1]['picture_url'])}
                         <img src="{$pictureResult[1]['picture_url']}" alt="" class="img-responsive">
                         {/if}
-                        {if !empty($pictureValue[2])}
+                        {if isset($pictureResult[2]['picture_url'])}
                             <img src="{$pictureResult[2]['picture_url']}" alt="" class="img-responsive">
                         {/if}
-                    {/foreach}
+
                 </div>
             </div>
         </div>
