@@ -37,7 +37,6 @@
                 {foreach name="activityResult" as item="activityValue"}
                     <li class="flex">
                         <div class="left">
-
                         </div>
                         <div class="right">
                             <h3>{$activityValue.name}</h3>
@@ -57,7 +56,7 @@
                 {foreach name="classMateResult" as item="classMateValue"}
                     {if $classMateValue.is_url == 1}
                         <li>
-                            <a href="/details/{$classMateValue.id}"><img src="__PUBLIC__/{$classMateValue.picture_url}" alt="" class="img-responsive"></a>
+                            <a href="/details/{$classMateValue.id}"><img src="{$classMateValue.picture_url}" alt="" class="img-responsive"></a>
                             <p><a href="/details/{$classMateValue.id}">{$classMateValue.name}</a></p>
                         </li>
                     {/if}
