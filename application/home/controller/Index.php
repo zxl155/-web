@@ -29,9 +29,16 @@ class Index extends \think\Controller
         $colimuResult = Colimu::colimuList();
         //获取活动公共
         $activityResult = Article::ArticleList(3,'id,name,content',4);
-        /*foreach ($activityResult as $activityKey => $activityValue) {
-            $activityResult[$activityKey]['content'] = substr_replace($activityValue['content'],'...',75);
-        }*/
+        $strActivity = '';
+        foreach ($activityResult as $activityKey => $activityValue) {
+            preg_match_all("/[\x{4e00}-\x{9fa5}]+/u", $activityValue['content'], $result);
+            if (!empty($result[0])) {
+                $strActivity = implode($result[0],'');
+                $strActivity = str_replace('宋体','',$strActivity);
+            }
+
+            $activityResult[$activityKey]['content'] = substr_replace($strActivity,'...',75);
+        }
 
         //获取同学新闻
         $classMateResult = Article::ArticleList(4,'id,name,picture_url',$count = 5);
@@ -48,7 +55,6 @@ class Index extends \think\Controller
 
         //获取活动图片
         $pictureResult = Article::ArticleList(6,'id,picture_url',3);
-
         //获取招生信息
         $recruitStudentResult = Article::ArticleList(7,'id,name',5);
         //获取双硕信息

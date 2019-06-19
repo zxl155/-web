@@ -41,7 +41,7 @@
                         </div>
                         <div class="right">
                             <h3>{$activityValue.name}</h3>
-                            <a href="/details/{$activityValue.id}" class="ellipsis">{$activityValue.content}</a>
+                            <a href="/details/{$activityValue.id}" class="ellipsis">{$activityValue.content|html_entity_decode=###}</a>
                         </div>
                     </li>
                 {/foreach}
@@ -83,13 +83,17 @@
             <div class="con flex">
                 <div class="left">
                     {foreach name="pictureResult" as item="pictureValue"}
-                        <img src="__PUBLIC__/{$pictureResult[0]['picture_url']}" alt="" class="img-responsive">
+                        <img src="{$pictureResult[0]['picture_url']}" alt="" class="img-responsive">
                     {/foreach}
                 </div>
                 <div class="right">
                     {foreach name="pictureResult" as item="pictureValue"}
-                        <img src="__PUBLIC__/{$pictureResult[1]['picture_url']}" alt="" class="img-responsive">
-                        <img src="__PUBLIC__/{$pictureResult[2]['picture_url']}" alt="" class="img-responsive">
+                        {if !empty($pictureValue[1])}
+                        <img src="{$pictureResult[1]['picture_url']}" alt="" class="img-responsive">
+                        {/if}
+                        {if !empty($pictureValue[2])}
+                            <img src="{$pictureResult[2]['picture_url']}" alt="" class="img-responsive">
+                        {/if}
                     {/foreach}
                 </div>
             </div>
@@ -162,7 +166,7 @@
                 {if $collegesValue.is_url == 1}
                     <div class="zixun flex">
                         <div class="left">
-                            <a href="/details/{$collegesValue.id}"><img src="__PUBLIC__/{$collegesValue.picture_url}" alt="" class="img-responsive"></a>
+                            <a href="/details/{$collegesValue.id}"><img src="{$collegesValue.picture_url}" alt="" class="img-responsive"></a>
                         </div>
                         <div class="right">
                             <p><a href="/details/{$collegesValue.id}">{$collegesValue.name}</a></p>
@@ -192,7 +196,7 @@
             <ul class="flex">
                 {foreach name="teachersResult" as item="teachersValue"}
                     <li>
-                        <img src="__PUBLIC__/{$teachersValue.picture_url}" alt="" class="img-responsive">
+                        <img src="{$teachersValue.picture_url}" alt="" class="img-responsive">
                         <p>{$teachersValue.name}</p>
                         <small>{$teachersValue.content}</small>
                     </li>
@@ -210,7 +214,7 @@
                 {foreach name="courseAuditionResult" as item="courseAuditionValue"}
                     <li class="flex">
                         <div class="left">
-                            <img src="__PUBLIC__/{$courseAuditionValue.picture_url}" alt="" class="img-responsive">
+                            <img src="{$courseAuditionValue.picture_url}" alt="" class="img-responsive">
                         </div>
                         <div class="right">
                             <p>{$courseAuditionValue.name}</p>
