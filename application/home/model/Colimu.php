@@ -31,7 +31,7 @@ class Colimu extends Model
      */
     public static function oneList($id)
     {
-        $result = Db::query("SELECT id,name,type FROM duyan_people_colimu WHERE `id` = $id");
+        $result = Db::query("SELECT id,name,type,column_url FROM duyan_people_colimu WHERE `id` = $id");
 
         return $result;
     }

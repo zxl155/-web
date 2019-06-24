@@ -29,7 +29,7 @@
             {foreach name="articleResult" as item="articleValue"}
                 <p class="flex">
                     <i class="iconfont">&#xe600;</i>
-                    <a href="/details/{$articleValue.id}" class="ellipsis">{$articleValue.name}</a>
+                    <a href="{$columnUrl}{$articleValue.id}.html" class="ellipsis">{$articleValue.name}</a>
                 </p>
             {/foreach}
         </div>
@@ -39,13 +39,13 @@
             <a href="javascript:void(0)" class="pre">上一页</a>
         {/if}
         {if $page > 1}
-            <a href="/colleges/{$colimuResult[0]['id']}/{$page-1}" class="pre"  style="color: #9f0000">上一页</a>
+            <a href="{$columnUrl}{$colimuResult[0]['id']}/{$page-1}" class="pre"  style="color: #9f0000">上一页</a>
         {/if}
         {if $page >= $countPage}
             <a href="javascript:void(0)" class="pre">下一页</a>
         {/if}
         {if $page >= 1 &&  $countPage > $page}
-            <a href="/colleges/{$colimuResult[0]['id']}/{$page+1}" class="pre"  style="color: #9f0000">下一页</a>
+            <a href="{$columnUrl}{$colimuResult[0]['id']}/{$page+1}" class="pre"  style="color: #9f0000">下一页</a>
         {/if}
     </div>
     {include file="public:foot" /}

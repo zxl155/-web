@@ -84,7 +84,7 @@ class Index extends \think\Controller
             preg_match_all("/[\x{4e00}-\x{9fa5}]+/u", $teachersValue['content'], $result);
             if (!empty($result[0])) {
                 $strTeachers = implode($result[0],'');
-                $strTeachers = str_replace('宋体','',$strActivity);
+                $strTeachers = str_replace('宋体','',$strTeachers);
             }
 
             $teachersResult[$teachersKey]['content'] = substr_replace($strTeachers,'...',30);
@@ -121,7 +121,6 @@ class Index extends \think\Controller
        $page_size = empty($request->param('page_size')) ? 9 : $request->param('page_size');
        $page      = empty($request->param('page')) ? 1 : $request->param('page');
 
-
        //单条信息
        $colimuResult  = Colimu::oneList($colimu_id);
 
@@ -131,6 +130,7 @@ class Index extends \think\Controller
 
            return $this->fetch('InstitutionalDetails',['articleResult' => $data['result'],
                'colimuResult' => $colimuResult,
+               'columnUrl' => $colimuResult[0]['column_url'],
                'page' => $page,
                'countPage' => $data['countPage'],
            ]);
@@ -141,6 +141,7 @@ class Index extends \think\Controller
 
            return $this->fetch('pictureDetails',['articleResult' => $data['result'],
                'colimuResult' => $colimuResult,
+               'columnUrl' => $colimuResult[0]['column_url'],
                'page' => $page,
                'countPage' => $data['countPage']
            ]);
@@ -151,6 +152,7 @@ class Index extends \think\Controller
 
            return $this->fetch('teachersDetails',['articleResult' => $data['result'],
                'colimuResult' => $colimuResult,
+               'columnUrl' => $colimuResult[0]['column_url'],
                'page' => $page,
                'countPage' => $data['countPage']
            ]);
@@ -166,7 +168,13 @@ class Index extends \think\Controller
      */
     public function introduceShow()
     {
-        $recommendResult = Article::ArticleList(1,'id,name',5,1);
+        $recommendResult = Article::ArticleList(1,'id,name,colimu_id',5,1);
+        foreach ($recommendResult as $key => $value)
+        {
+            //单条信息
+            $colimuResult  = Colimu::oneList($value['colimu_id']);
+            $recommendResult[$key]['column_url'] = $colimuResult[0]['column_url'];
+        }
 
         return $this->fetch('collegesIntroduce',['recommendResult' => $recommendResult]);
     }
@@ -181,16 +189,18 @@ class Index extends \think\Controller
 
         //内容
         $contentResult = Article::contentDetails($article_id,'id,name,content,create_time,colimu_id');
-
         //相关文章
         $relevantResult = Article::detailsList($contentResult[0]['colimu_id'],1,5,'id,name');
         //获取当前文章前一条数据跟后一条数据
         $aroundResult = Article::aroundList($article_id,$contentResult[0]['colimu_id']);
+        //单条信息
+        $colimuResult  = Colimu::oneList($contentResult[0]['colimu_id']);
 
         return $this->fetch('contentDetails',['contentResult' => $contentResult,
             'relevantResult' => $relevantResult['result'],
             'colimuId' => $contentResult[0]['colimu_id'],
-            'aroundResult' => $aroundResult
+            'aroundResult' => $aroundResult,
+            'columnUrl' => $colimuResult[0]['column_url']
         ]);
     }
 

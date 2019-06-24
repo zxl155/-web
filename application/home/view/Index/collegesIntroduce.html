@@ -45,7 +45,7 @@
             {foreach name="recommendResult" as item="recommendValue"}
                 <li class="flex">
                     <span></span>
-                    <a href="/details/{$recommendValue.id}" class="ellipsis">{$recommendValue.name}</a>
+                    <a href="{$recommendValue.column_url}{$recommendValue.id}.html" class="ellipsis">{$recommendValue.name}</a>
                 </li>
             {/foreach}
         </ul>

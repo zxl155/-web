@@ -20,7 +20,7 @@
             <ul class="swiper-wrapper ">
                 <li class="swiper-slide item active"><a href="/">首页</a></li>
                 {foreach name="colimuResult" as item="colimuValue"}
-                    <li class="swiper-slide item"><a href="{$colimuValue.column_url}/{$colimuValue.id}/1">{$colimuValue.name}</a></li>
+                    <li class="swiper-slide item"><a href="{$colimuValue.column_url}">{$colimuValue.name}</a></li>
                 {/foreach}
             </ul>
         </div>
@@ -31,7 +31,7 @@
             <div class="title">
                 <span></span>
                 活动公告
-                <a href="/colleges/3/1">更多></a>
+                <a href="/hdgg/">更多></a>
             </div>
             <ul>
                 {foreach name="activityResult" as item="activityValue"}
@@ -39,8 +39,8 @@
                         <div class="left">
                         </div>
                         <div class="right">
-                            <h3>{$activityValue.name}</h3>
-                            <a href="/details/{$activityValue.id}" class="ellipsis">{$activityValue.content|html_entity_decode=###}</a>
+                            <h3><a href="/hdgg/{$activityValue.id}.html" class="ellipsis">{$activityValue.name}</a></h3>
+                            <a href="/hdgg/{$activityValue.id}.html" class="ellipsis">{$activityValue.content|html_entity_decode=###}</a>
                         </div>
                     </li>
                 {/foreach}
@@ -50,14 +50,14 @@
             <div class="title">
                 <span></span>
                 同学新闻
-                <a href="/colleges/4/1">更多></a>
+                <a href="/txxw/">更多></a>
             </div>
             <ul class="flex">
                 {foreach name="classMateResult" as item="classMateValue"}
                     {if $classMateValue.is_url == 1}
                         <li>
-                            <a href="/details/{$classMateValue.id}"><img src="{$classMateValue.picture_url}" alt="" class="img-responsive"></a>
-                            <p><a href="/details/{$classMateValue.id}">{$classMateValue.name}</a></p>
+                            <a href="/txxw/{$classMateValue.id}.html"><img src="{$classMateValue.picture_url}" alt="" class="img-responsive"></a>
+                            <p><a href="/txxw/{$classMateValue.id}.html">{$classMateValue.name}</a></p>
                         </li>
                     {/if}
                 {/foreach}
@@ -67,7 +67,7 @@
                     {if $classMateValue.is_url == 0}
                         <p class="flex">
                             <i class="iconfont">&#xe600;</i>
-                            <a href="/details/{$classMateValue.id}" class="ellipsis">{$classMateValue.name}</a>
+                            <a href="/txxw/{$classMateValue.id}.html" class="ellipsis">{$classMateValue.name}</a>
                         </p>
                     {/if}
                 {/foreach}
@@ -77,7 +77,7 @@
             <div class="title">
                 <span></span>
                 活动图片
-                <a href="/colleges/6/1">更多></a>
+                <a href="/hdtp/">更多></a>
             </div>
             <div class="con flex">
                 <div class="left">
@@ -114,44 +114,44 @@
                     {foreach name="recruitStudentResult" as item="recruitStudentValue"}
                         <li class="flex">
                             <span></span>
-                            <a href="/details/{$recruitStudentValue.id}" class="ellipsis">{$recruitStudentValue.name}</a>
+                            <a href="/zsxx/{$recruitStudentValue.id}.html" class="ellipsis">{$recruitStudentValue.name}</a>
                         </li>
                     {/foreach}
                     <div class="title">
-                        <a href="/colleges/7/1">更多></a>
+                        <a href="/zsxx/">更多></a>
                     </div>
                 </ul>
                 <ul>
                     {foreach name="sasuResult" as item="sasuValue"}
                         <li class="flex">
                             <span></span>
-                            <a href="/details/{$sasuValue.id}" class="ellipsis">{$sasuValue.name}</a>
+                            <a href="/szss/{$sasuValue.id}.html" class="ellipsis">{$sasuValue.name}</a>
                         </li>
                     {/foreach}
                     <div class="title">
-                        <a href="/colleges/8/1">更多></a>
+                        <a href="/szss/">更多></a>
                     </div>
                 </ul>
                 <ul>
                     {foreach name="administrationResult" as item="administrationValue"}
                         <li class="flex">
                             <span></span>
-                            <a href="/details/{$administrationValue.id}" class="ellipsis">{$administrationValue.name}</a>
+                            <a href="/glzk/{$administrationValue.id}.html" class="ellipsis">{$administrationValue.name}</a>
                         </li>
                     {/foreach}
                     <div class="title">
-                        <a href="/colleges/9/1">更多></a>
+                        <a href="/glzk/">更多></a>
                     </div>
                 </ul>
                 <ul>
                     {foreach name="enterpriseResult" as item="enterpriseValue"}
                         <li class="flex">
                             <span></span>
-                            <a href="/details/{$enterpriseValue.id}" class="ellipsis">{$enterpriseValue.name}</a>
+                            <a href="/qynx/{$enterpriseValue.id}.html" class="ellipsis">{$enterpriseValue.name}</a>
                         </li>
                     {/foreach}
                     <div class="title">
-                        <a href="/colleges/10/1">更多></a>
+                        <a href="/qynx/">更多></a>
                     </div>
                 </ul>
             </div>
@@ -161,16 +161,16 @@
             <div class="title">
                 <span></span>
                 院校资讯
-                <a href="/colleges/1/1">更多></a>
+                <a href="/yxzx/">更多></a>
             </div>
             {foreach name="collegesResult" as item="collegesValue"}
                 {if $collegesValue.is_url == 1}
                     <div class="zixun flex">
                         <div class="left">
-                            <a href="/details/{$collegesValue.id}"><img src="{$collegesValue.picture_url}" alt="" class="img-responsive"></a>
+                            <a href="/yxzx/{$collegesValue.id}.html"><img src="{$collegesValue.picture_url}" alt="" class="img-responsive"></a>
                         </div>
                         <div class="right">
-                            <p><a href="/details/{$collegesValue.id}">{$collegesValue.name}</a></p>
+                            <p><a href="/yxzx/{$collegesValue.id}.html">{$collegesValue.name}</a></p>
                             <span>{$collegesValue.create_time}</span>
                         </div>
                     </div>
@@ -181,7 +181,7 @@
                     {if $collegesValue.is_url == 0}
                         <p class="flex">
                             <i class="iconfont">&#xe600;</i>
-                            <a href="/details/{$collegesValue.id}" class="ellipsis">{$collegesValue.name}</a>
+                            <a href="/yxzx/{$collegesValue.id}.html" class="ellipsis">{$collegesValue.name}</a>
                         </p>
                     {/if}
                 {/foreach}
@@ -192,7 +192,7 @@
             <div class="title">
                 <span></span>
                 师资介绍
-                <a href="/colleges/5/1">更多></a>
+                <a href="/szjs/">更多></a>
             </div>
             <ul class="flex">
                 {foreach name="teachersResult" as item="teachersValue"}
@@ -209,7 +209,7 @@
             <div class="title">
                 <span></span>
                 课程试听
-                <a href="/colleges/11/1">更多></a>
+                <a href="/kcst/">更多></a>
             </div>
             <ul>
                 {foreach name="courseAuditionResult" as item="courseAuditionValue"}
@@ -219,7 +219,7 @@
                         </div>
                         <div class="right">
                             <p>{$courseAuditionValue.name}</p>
-                            <p><a href="/details/{$courseAuditionValue.id}"><i class="iconfont">&#xe603;</i>预约试听</a><span>已有{$courseAuditionValue.audition_count}人试听</span></p>
+                            <p><a href="/kcst/{$courseAuditionValue.id}.html"><i class="iconfont">&#xe603;</i>预约试听</a><span>已有{$courseAuditionValue.audition_count}人试听</span></p>
                         </div>
                     </li>
                 {/foreach}

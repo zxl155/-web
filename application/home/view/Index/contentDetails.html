@@ -41,10 +41,10 @@
         </div>
         <div class="np">
             {if !empty($aroundResult[0])}
-                <p class="flex">上一篇：<a href="/details/{$aroundResult[0]['id']}" class="ellipsis">{$aroundResult[0]['name']}</a></p>
+                <p class="flex">上一篇：<a href="{$columnUrl}{$aroundResult[0]['id']}.html" class="ellipsis">{$aroundResult[0]['name']}</a></p>
             {/if}
             {if !empty($aroundResult[1])}
-            <p class="flex">下一篇：<a href="/details/{$aroundResult[1]['id']}" class="ellipsis">{$aroundResult[1]['name']}</a></p>
+            <p class="flex">下一篇：<a href="{$columnUrl}{$aroundResult[1]['id']}.html" class="ellipsis">{$aroundResult[1]['name']}</a></p>
             {/if}
         </div>
     </div>
@@ -53,13 +53,13 @@
         <div class="title">
             <span></span>
             相关文章
-            <a href="/colleges/{$colimuId}/1">更多</a>
+            <a href="{$columnUrl}">更多</a>
         </div>
         <ul>
             {foreach name="relevantResult" as item="relevantValue"}
                 <li class="flex">
                     <span></span>
-                    <a href="/details/{$relevantValue.id}" class="ellipsis">{$relevantValue.name}</a>
+                    <a href="{$columnUrl}{$relevantValue.id}.html" class="ellipsis">{$relevantValue.name}</a>
                 </li>
             {/foreach}
         </ul>
