@@ -22,7 +22,6 @@ Route::rule('szss/:id/:page','home/Index/detailsList');
 Route::rule('glzk/:id/:page','home/Index/detailsList');
 Route::rule('qynx/:id/:page','home/Index/detailsList');
 Route::rule('kcst/:id/:page','home/Index/detailsList');
-
 Route::rule('yxzx/:id','home/Index/contentDetails');
 Route::rule('hdgg/:id','home/Index/contentDetails');
 Route::rule('txxw/:id','home/Index/contentDetails');
@@ -33,7 +32,6 @@ Route::rule('szss/:id','home/Index/contentDetails');
 Route::rule('glzk/:id','home/Index/contentDetails');
 Route::rule('qynx/:id','home/Index/contentDetails');
 Route::rule('kcst/:id','home/Index/contentDetails');
-
 Route::rule('yxzx','home/Index/detailsList?id=1');
 Route::rule('hdgg','home/Index/detailsList?id=3');
 Route::rule('txxw','home/Index/detailsList?id=4');
@@ -44,8 +42,10 @@ Route::rule('szss','home/Index/detailsList?id=8');
 Route::rule('glzk','home/Index/detailsList?id=9');
 Route::rule('qynx','home/Index/detailsList?id=10');
 Route::rule('kcst','home/Index/detailsList?id=11');
-
 Route::rule('introduce','home/Index/introduceShow');
+Route::rule('baoming','home/Index/signUp');
+Route::rule('signup','home/Index/addSignUp');
+
 
 
 

@@ -193,6 +193,10 @@ class Index extends \think\Controller
         $relevantResult = Article::detailsList($contentResult[0]['colimu_id'],1,5,'id,name');
         //获取当前文章前一条数据跟后一条数据
         $aroundResult = Article::aroundList($article_id,$contentResult[0]['colimu_id']);
+        //获取招生信息
+        $recruitStudentResult = Article::ArticleList(7,'id,name',5);
+        //获取活动图片
+        $pictureResult = Article::ArticleList(6,'id,picture_url',3);
         //单条信息
         $colimuResult  = Colimu::oneList($contentResult[0]['colimu_id']);
 
@@ -200,8 +204,35 @@ class Index extends \think\Controller
             'relevantResult' => $relevantResult['result'],
             'colimuId' => $contentResult[0]['colimu_id'],
             'aroundResult' => $aroundResult,
-            'columnUrl' => $colimuResult[0]['column_url']
+            'columnUrl' => $colimuResult[0]['column_url'],
+            'recruitStudentResult' => $recruitStudentResult,
+            'pictureResult' => $pictureResult
         ]);
     }
+    /**
+     * 报名
+     * @time 2019-06-25
+     * @return
+     */
+    public function signUp(Request $request)
+    {
+        return $this->fetch('signUp');
+    }
+    /**
+     * 添加报名
+     * @time 2019-06-25
+     * @return
+     */
+    public function addSignUp(Request $request)
+    {
+        $data = $request->param();
 
+        $result = Article::addSignUp($data);
+        $code = 100;
+        if(!$result) {
+            $code = 1002;
+        }
+
+        return $code;
+    }
 }

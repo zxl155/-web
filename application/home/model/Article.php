@@ -79,5 +79,24 @@ class Article extends Model
 
         return $result;
     }
+    /**
+     * 张晓龙
+     * 添加报名信息
+     * @time 2019-06-26
+     * @param $data 数据
+     */
+    public static function addSignUp($data)
+    {
+        $datas = array('name' => $data['xingming'],
+            'dianhua' => $data['shouji'],
+            'yxzy' => $data['yxzy'],
+            'szdq' => $data['diqu'],
+            'time' => date("Y-m-d H:i:s")
+        );
+
+        $result = Db('duyan_form_baoming')->insert($datas);
+
+        return $result;
+    }
 
 }

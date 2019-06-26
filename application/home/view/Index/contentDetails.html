@@ -37,7 +37,9 @@
             {foreach name="contentResult" as item="contentValue"}
                 {$contentResult[0]['content']|html_entity_decode=###}
             {/foreach}
-
+            <p class="liji">
+                <a href="http://rusz.duyan.com/baoming">立即报名</a>
+            </p>
         </div>
         <div class="np">
             {if !empty($aroundResult[0])}
@@ -63,6 +65,47 @@
                 </li>
             {/foreach}
         </ul>
+    </div>
+    <div class="glzk" style="margin-bottom: 1.86666667rem;">
+        <div class="title">
+            <span></span>
+            招生信息
+            <a href="/zsxx/">更多</a>
+        </div>
+        <ul>
+            {foreach name="recruitStudentResult" as item="recruitStudentValue"}
+            <li class="flex">
+                <span></span>
+                <a href="/zsxx/{$recruitStudentValue.id}.html" class="ellipsis">{$recruitStudentValue.name}</a>
+            </li>
+            {/foreach}
+        </ul>
+    </div>
+    <div class="part3">
+        <div class="title">
+            <span></span>
+            活动图片
+            <a href="/hdtp/">更多></a>
+        </div>
+        <div class="con flex">
+            <div class="left">
+
+                {if isset($pictureResult[0]['picture_url'])}
+                <img src="{$pictureResult[0]['picture_url']}" alt="" class="img-responsive">
+                {/if}
+
+            </div>
+            <div class="right">
+
+                {if isset($pictureResult[1]['picture_url'])}
+                <img src="{$pictureResult[1]['picture_url']}" alt="" class="img-responsive">
+                {/if}
+                {if isset($pictureResult[2]['picture_url'])}
+                <img src="{$pictureResult[2]['picture_url']}" alt="" class="img-responsive">
+                {/if}
+
+            </div>
+        </div>
     </div>
     {include file="public:foot" /}
 </div>
